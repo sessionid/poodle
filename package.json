@@ -1,0 +1,29 @@
+{
+  "name": "poodle",
+  "version": "1.0.0",
+  "description": "downloader for m3u8",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sessionid/poodle.git"
+  },
+  "author": "sessionid",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/sessionid/poodle/issues"
+  },
+  "homepage": "https://github.com/sessionid/poodle#readme",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^8.2.1",
+    "nyc": "^15.1.0"
+  },
+  "dependencies": {
+    "got": "^11.8.0",
+    "sessionid-fly": "git+https://github.com/sessionid/fly.git",
+    "sessionid-windy": "git+https://github.com/sessionid/windy.git"
+  }
+}
