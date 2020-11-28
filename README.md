@@ -10,3 +10,11 @@ m3u8 downloader
 - `#stop()`
 - `#start()`
 - `#restore()`
+- Events:
+    - data `({ current, total, complete })`
+    - oncerr `(blockId)`
+    - error `(logFilePath)`
+    - stop
+    - pause
+    - start `(taskLength)`
+    - finish `(dest)`

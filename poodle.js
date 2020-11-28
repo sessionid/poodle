@@ -28,6 +28,7 @@ class Poodle extends EventEmitter {
         this._options = { ...options, timeout };
         this._after = this._after.bind(this);
         this._log = this._log.bind(this);
+        this._logFilePath = join(cacheDir, 'log.json');
         this._onDataListener = this._onDataListener.bind(this);
         this._onErrorListener = this._onErrorListener.bind(this);
         this._onFinishListener = this._onFinishListener.bind(this);
@@ -57,10 +58,10 @@ class Poodle extends EventEmitter {
     }
 
     _onFinishListener() {
-        const { errList, _log } = this;
+        const { errList, _log, _logFilePath } = this;
         if (errList.length) {
             _log();
-            this.emit('error', 'log.json');
+            this.emit('error', _logFilePath);
         } else {
             this._after();
         }
@@ -68,9 +69,9 @@ class Poodle extends EventEmitter {
 
     /* log into file for restoring */
     _log() {
-        const { execuator, fileList, errList, _param: param, cacheDir } = this;
+        const { execuator, fileList, errList, _param: param, _logFilePath } = this;
         const taskList = execuator.taskList.valueOf();
-        writeFile(join(cacheDir, 'log.json'), JSON.stringify({ fileList, errList, taskList, param }));
+        writeFile(_logFilePath, JSON.stringify({ fileList, errList, taskList, param }));
     }
 
     pause() {
